@@ -12,6 +12,8 @@ LABEL maintainer "zyao89 <zyao89@gmail.com>"
 
 COPY --from=builder /app/dist /ui
 
+COPY files/config.yaml /root/.config/clash/config.yaml
+
 WORKDIR /
 
 VOLUME ["/root/.config/clash"]
