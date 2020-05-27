@@ -2,7 +2,7 @@
 
 [![Docker Build Status](https://img.shields.io/docker/build/zyao89/clash-with-dashboard.svg)](https://hub.docker.com/r/zyao89/clash-with-dashboard) [![Docker Automated build](https://img.shields.io/docker/automated/zyao89/clash-with-dashboard.svg)](https://hub.docker.com/r/zyao89/clash-with-dashboard) [![Docker Stars](https://img.shields.io/docker/stars/zyao89/clash-with-dashboard.svg)](https://hub.docker.com/r/zyao89/clash-with-dashboard) [![Docker Pulls](https://img.shields.io/docker/pulls/zyao89/clash-with-dashboard.svg)](https://hub.docker.com/r/zyao89/clash-with-dashboard)
 
-This Dockerfile build an image for [clash](https://github.com/dreamacro/clash) with [AriaNg](https://github.com/dreamacro/clash-dashboard) frontends.
+This Dockerfile build an image for [clash](https://github.com/dreamacro/clash) with [clash-dashboard](https://github.com/dreamacro/clash-dashboard) frontends.
 
 ## Quick Start
 
