@@ -1,0 +1,24 @@
+name: Check update everyday
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Check update
+        env:
+          token: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          publish_date1=$(curl -sX GET "https://api.github.com/repos/Dreamacro/clash/releases/latest" | awk '/published_at/{print $4;exit}' FS='[""]')
+          publish_date2=$(curl -sX GET "https://api.github.com/repos/Dreamacro/clash-dashboard/releases/latest" | awk '/published_at/{print $4;exit}' FS='[""]')
+          build_date=$(curl -sX GET "https://hub.docker.com/v2/repositories/zyao89/clash-with-dashboard/" | grep -oP '(?<="last_updated": ")[^"]*' | cut -d '.' -f1 | awk '{print $1"Z"}')
+          if [ $publish_date1 \> $build_date ] || [ $publish_date2 \> $build_date ]
+            then
+              # curl -X POST https://hub.docker.com/api/build/v1/source/f5f7d5fa-3932-44f1-903e-f62300678545/trigger/$target/call/
+            else
+              echo up to date
+          fi
