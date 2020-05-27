@@ -18,17 +18,18 @@ COPY --from=builder /app/dist /ui
 
 COPY files/config.yaml /preset-conf/config.yaml
 
-WORKDIR /
-
 COPY files/start.sh /start.sh
+RUN chmod +x /start.sh
 
 VOLUME ["/root/.config/clash"]
 
+WORKDIR /
 EXPOSE 7890
 EXPOSE 7891
 EXPOSE 8080
 EXPOSE 80
 
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT []
 
+CMD ["/start.sh"]
 HEALTHCHECK --interval=5s --timeout=1s CMD ps | grep darkhttpd | grep -v grep || exit 1
