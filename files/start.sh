@@ -18,12 +18,12 @@ if [ $TRANSPARENT_PROXY = 'true' ]; then
     iptables -t nat -A Clash -p tcp -j REDIRECT --to-ports $REDIR_PORT
     iptables -t nat -A PREROUTING -p tcp -j Clash
     iptables -t nat -A PREROUTING -p tcp -j REDIRECT --to-ports $REDIR_PORT
-
+    
     if [ -f /root/.config/clash/config.yaml ]; then
         if [ -z "`grep "redir-port" /root/.config/clash/config.yaml`" ]; then
             sed -i '$a redir-port: '${REDIR_PORT} /root/.config/clash/config.yaml
         else
-            sed -i "s@redir-port.*@redir-port=$REDIR_PORT@g" /root/.config/clash/config.yaml
+            sed -i "s@redir-port.*@redir-port: $REDIR_PORT@g" /root/.config/clash/config.yaml
         fi
     fi
 fi
