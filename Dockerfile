@@ -16,6 +16,13 @@ RUN mkdir -p /preset-conf \
 
 COPY --from=builder /app/dist /ui
 
+RUN cd \
+    && wget https://github.com/haishanh/yacd/archive/gh-pages.zip \
+    # 解压缩并且把目录名改成 dashboard
+    && unzip gh-pages.zip \
+    && rm -rf gh-pages.zip \
+    && mv yacd-gh-pages/ /dashboard
+
 COPY files/config.yaml /preset-conf/config.yaml
 
 COPY files/start.sh /start.sh
