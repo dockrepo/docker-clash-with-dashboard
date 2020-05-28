@@ -12,7 +12,7 @@ LABEL maintainer "zyao89 <zyao89@gmail.com>"
 
 RUN mkdir -p /preset-conf \
     && mkdir -p /root/.config/clash \
-    && apk add --no-cache darkhttpd
+    && apk add --no-cache darkhttpd iptables net-tools curl vim
 
 COPY --from=builder /app/dist /ui
 

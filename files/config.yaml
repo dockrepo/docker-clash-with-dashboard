@@ -2,7 +2,7 @@ port: 7890
 socks-port: 7891
 
 # redir port for Linux and macOS
-# redir-port: 7892
+redir-port: 7892
 
 # `allow-lan` must be true in your config.yaml
 allow-lan: true
