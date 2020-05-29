@@ -18,7 +18,7 @@ jobs:
           build_date=$(curl -sX GET "https://hub.docker.com/v2/repositories/zyao89/clash-with-dashboard/" | grep -oP '(?<="last_updated": ")[^"]*' | cut -d '.' -f1 | awk '{print $1"Z"}')
           if [ $publish_date1 \> $build_date ] || [ $publish_date2 \> $build_date ]
             then
-              # curl -X POST https://hub.docker.com/api/build/v1/source/f5f7d5fa-3932-44f1-903e-f62300678545/trigger/$target/call/
+              curl -X POST https://hub.docker.com/api/build/v1/source/499faf65-e6d4-4b23-a3f7-7d62096e8ca6/trigger/$token/call/
             else
               echo up to date
           fi
